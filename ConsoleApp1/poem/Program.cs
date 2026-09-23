@@ -10,6 +10,11 @@ namespace poem
     {
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine('М. Лермонтов');
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine('Парус');
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Белеет парус одинокой");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("В тумане моря голубом!..");
