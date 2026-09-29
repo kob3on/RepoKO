@@ -10,13 +10,16 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("Привет, мир!");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("hi lol");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("hi lol");
-            Console.ReadKey();
+            Console.WriteLine("Введите длину:");
+            int a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите ширину:");
+            int b = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите высоту:");
+            int c = int.Parse(Console.ReadLine());
+            Console.WriteLine("Объём:");
+            Console.WriteLine(a * b * c);
+            Console.WriteLine("Площадь поверхности:");
+            Console.WriteLine(2 * ((a * b) + (a * c) + (b * c)));
         }
     }
 }
