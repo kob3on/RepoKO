@@ -10,16 +10,25 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите длину:");
-            int a = int.Parse(Console.ReadLine());
-            Console.WriteLine("Введите ширину:");
-            int b = int.Parse(Console.ReadLine());
-            Console.WriteLine("Введите высоту:");
-            int c = int.Parse(Console.ReadLine());
-            Console.WriteLine("Объём:");
-            Console.WriteLine(a * b * c);
-            Console.WriteLine("Площадь поверхности:");
-            Console.WriteLine(2 * ((a * b) + (a * c) + (b * c)));
+            int n = int.Parse(Console.ReadLine());
+            if (n < 1 || n > 999){
+                Console.WriteLine("n должно быть в диапазоне от 1 до 999.");
+                return;
+            }
+            if (n % 10 == 0){
+                Console.WriteLine("количество единиц не должно быть равно нулю.");
+                return;
+            }
+            int h = n / 100;
+            int d = (n / 10) % 10;
+            int e = n % 10;
+            int x = 100 * e + 10 * d + h;
+            if (x < 100 || x > 999)
+            {
+                Console.WriteLine("x не трехзначное");
+                return;
+            }
+            Console.WriteLine($"Искомое число x = {x}");
         }
     }
 }
