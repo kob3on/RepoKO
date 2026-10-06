@@ -19,10 +19,22 @@ namespace ConsoleApp1
                 Console.WriteLine("количество единиц не должно быть равно нулю.");
                 return;
             }
-            int h = n / 100;
-            int d = (n / 10) % 10;
-            int e = n % 10;
-            int x = 100 * e + 10 * d + h;
+            int f = n / 100;
+            int s = (n / 10) % 10;
+            int t = n % 10;
+            if (f == 0)
+            {
+                if (s == 0)
+                {
+                    int x1 = t;
+                    Console.WriteLine($"Искомое число x = {x1}");
+                    return;
+                }
+                int x2 = 10 * t + s;
+                Console.WriteLine($"Искомое число x = {x2}");
+                return;
+            }
+            int x = 100 * t + 10 * s + f;
             if (x < 100 || x > 999)
             {
                 Console.WriteLine("x не трехзначное");
