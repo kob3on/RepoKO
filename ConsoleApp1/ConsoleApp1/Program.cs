@@ -8,15 +8,38 @@ namespace ConsoleApp1
 {
     internal class Program
     {
+        static double CalculateFunction(double x)
+        {
+            double result = Math.Sqrt(x + 1);
+
+            result = Math.Abs(x + result);
+            result = Math.Abs(x + result);
+            result = Math.Abs(x + result);
+
+            return result;
+        }
+
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("Привет, мир!");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("hi lol");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("hi lol");
-            Console.ReadKey();
+            Console.Write("Введите значение x (x >= -1): ");
+
+            if (double.TryParse(Console.ReadLine(), out double x))
+            {
+                if (x < -1)
+                {
+                    Console.WriteLine("Ошибка: подкоренное выражение не может быть отрицательным. x должен быть >= -1.");
+                }
+                else
+                {
+                    double y = CalculateFunction(x);
+
+                    Console.WriteLine($"Значение функции f({x}) = {y:F3}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Ошибка: введено некорректное число.");
+            }
         }
     }
 }
