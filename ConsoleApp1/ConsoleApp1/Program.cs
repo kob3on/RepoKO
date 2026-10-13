@@ -8,15 +8,20 @@ namespace ConsoleApp1
 {
     internal class Program
     {
+        static double CalculateTerm(double a, double b)
+        {
+            return Math.Sqrt((a + Math.Exp(-a)) / b);
+        }
+
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("Привет, мир!");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("hi lol");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("hi lol");
-            Console.ReadKey();
+            double term1 = CalculateTerm(2, 3);
+            double term2 = CalculateTerm(3, 5);
+            double term3 = CalculateTerm(5, 7);
+
+            double x = term1 + term2 + term3;
+
+            Console.WriteLine($"Результат x = {x:F3}");
         }
     }
 }
