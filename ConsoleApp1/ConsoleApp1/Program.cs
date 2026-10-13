@@ -8,20 +8,38 @@ namespace ConsoleApp1
 {
     internal class Program
     {
-        static double CalculateTerm(double a, double b)
+        static double CalculateFunction(double x)
         {
-            return Math.Sqrt((a + Math.Exp(-a)) / b);
+            double result = Math.Sqrt(x + 1);
+
+            result = Math.Abs(x + result);
+            result = Math.Abs(x + result);
+            result = Math.Abs(x + result);
+
+            return result;
         }
 
         static void Main(string[] args)
         {
-            double term1 = CalculateTerm(2, 3);
-            double term2 = CalculateTerm(3, 5);
-            double term3 = CalculateTerm(5, 7);
+            Console.Write("Введите значение x (x >= -1): ");
 
-            double x = term1 + term2 + term3;
+            if (double.TryParse(Console.ReadLine(), out double x))
+            {
+                if (x < -1)
+                {
+                    Console.WriteLine("Ошибка: подкоренное выражение не может быть отрицательным. x должен быть >= -1.");
+                }
+                else
+                {
+                    double y = CalculateFunction(x);
 
-            Console.WriteLine($"Результат x = {x:F3}");
+                    Console.WriteLine($"Значение функции f({x}) = {y:F3}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Ошибка: введено некорректное число.");
+            }
         }
     }
 }
