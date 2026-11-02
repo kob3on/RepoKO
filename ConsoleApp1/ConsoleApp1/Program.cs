@@ -8,25 +8,20 @@ namespace ConsoleApp1
 {
     class Program
     {
-        static bool IsMultipleOfThree(int k, int m, int n)
+        static bool IsInside(double x, double y)
         {
-            return k % 3 == 0 && m % 3 == 0 && n % 3 == 0;
+            return x >= 2 || (y >= 0.5 && y <= 1.5);
         }
 
         static void Main()
         {
-            Console.Write("Введите k: ");
-            int k = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите x: ");
+            double x = Convert.ToDouble(Console.ReadLine());
 
-            Console.Write("Введите m: ");
-            int m = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите y: ");
+            double y = Convert.ToDouble(Console.ReadLine());
 
-            Console.Write("Введите n: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-
-            bool result = IsMultipleOfThree(k, m, n);
-
-            Console.WriteLine(result);
+            Console.WriteLine(IsInside(x, y));
         }
     }
 }
