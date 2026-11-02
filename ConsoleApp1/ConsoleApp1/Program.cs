@@ -8,59 +8,83 @@ namespace ConsoleApp1
 {
     class Program
     {
-        static string ToLeet(string text)
+        static bool DecodePosition(string position, out int x, out int y)
         {
-            string result = "";
+            x = 0;
+            y = 0;
 
-            foreach (char c in text)
-            {
-                switch (char.ToUpper(c))
-                {
-                    case 'A': result += "4"; break;
-                    case 'B': result += "8"; break;
-                    case 'C': result += "("; break;
-                    case 'D': result += "|)"; break;
-                    case 'E': result += "3"; break;
-                    case 'F': result += "|="; break;
-                    case 'G': result += "6"; break;
-                    case 'H': result += "|-|"; break;
-                    case 'I': result += "!"; break;
-                    case 'J': result += ")"; break;
-                    case 'K': result += "|<"; break;
-                    case 'L': result += "1"; break;
-                    case 'M': result += "|\\/|"; break;
-                    case 'N': result += "|\\|"; break;
-                    case 'O': result += "0"; break;
-                    case 'P': result += "|>"; break;
-                    case 'Q': result += "9"; break;
-                    case 'R': result += "|2"; break;
-                    case 'S': result += "5"; break;
-                    case 'T': result += "7"; break;
-                    case 'U': result += "|_|"; break;
-                    case 'V': result += "\\/"; break;
-                    case 'W': result += "\\/\\/"; break;
-                    case 'X': result += "><"; break;
-                    case 'Y': result += "'/"; break;
-                    case 'Z': result += "2"; break;
+            if (position.Length != 2)
+                return false;
 
-                    default:
-                        result += c;
-                        break;
-                }
-            }
+            char letter = char.ToLower(position[0]);
+            char number = position[1];
 
-            return result;
+            if (letter < 'a' || letter > 'h' || number < '1' || number > '8')
+                return false;
+
+            x = letter - 'a' + 1;
+            y = number - '0';
+
+            return true;
+        }
+        static bool QueenAttacks(int x1, int y1, int x2, int y2)
+        {
+            return x1 == x2 ||
+                   y1 == y2 ||
+                   Math.Abs(x1 - x2) == Math.Abs(y1 - y2);
         }
 
-        static void Main(string[] args)
+        static bool KingAttacks(int x1, int y1, int x2, int y2)
         {
-            Console.Write("Введите текст на английском языке: ");
-            string text = Console.ReadLine();
+            return Math.Abs(x1 - x2) <= 1 &&
+                   Math.Abs(y1 - y2) <= 1 &&
+                   (x1 != x2 || y1 != y2);
+        }
 
-            string leetText = ToLeet(text);
+        static void Main()
+        {
+            Console.Write("Введите позицию ферзя: ");
+            string queenPosition = Console.ReadLine();
 
-            Console.WriteLine("Текст на Leet: " + leetText);
-            Console.ReadKey();
+            Console.Write("Введите позицию короля: ");
+            string kingPosition = Console.ReadLine();
+
+            int qx, qy, kx, ky;
+
+            // Проверка корректности позиций
+            if (!DecodePosition(queenPosition, out qx, out qy) ||
+                !DecodePosition(kingPosition, out kx, out ky))
+            {
+                Console.WriteLine("Ошибка! Некорректная позиция.");
+                return;
+            }
+
+            // Проверка, что позиции не совпадают
+            if (qx == kx && qy == ky)
+            {
+                Console.WriteLine("Ошибка! Позиции фигур совпадают.");
+                return;
+            }
+
+            bool queenHitsKing = QueenAttacks(qx, qy, kx, ky);
+            bool kingHitsQueen = KingAttacks(kx, ky, qx, qy);
+
+            if (queenHitsKing && kingHitsQueen)
+            {
+                Console.WriteLine("Обе фигуры находятся под боем друг друга.");
+            }
+            else if (queenHitsKing)
+            {
+                Console.WriteLine("Ферзь бьёт короля.");
+            }
+            else if (kingHitsQueen)
+            {
+                Console.WriteLine("Король бьёт ферзя.");
+            }
+            else
+            {
+                Console.WriteLine("Ни одна фигура не находится под боем другой.");
+            }
         }
     }
 }
