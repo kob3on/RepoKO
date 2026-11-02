@@ -6,29 +6,17 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Program
+    internal class Program
     {
-        static bool IsMultipleOfThree(int k, int m, int n)
+        static void Main(string[] args)
         {
-            return k % 3 == 0 && m % 3 == 0 && n % 3 == 0;
-        }
-
-        static void Main()
-        {
-            Console.Write("Введите k: ");
-            int k = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Введите m: ");
-            int m = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Введите n: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-
-            bool result = IsMultipleOfThree(k, m, n);
-
-            Console.WriteLine(result);
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("Привет, мир!");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("hi lol");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("hi lol");
+            Console.ReadKey();
         }
     }
 }
-    
-
