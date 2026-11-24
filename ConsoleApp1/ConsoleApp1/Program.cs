@@ -10,29 +10,29 @@ namespace ConsoleApp1
     {
         static void Main()
         {
-            Console.Write("Введите n: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.Write("Введите первое число: ");
+            int a = int.Parse(Console.ReadLine());
 
-            Console.Write("Введите k: ");
-            int k = int.Parse(Console.ReadLine());
+            Console.Write("Введите второе число: ");
+            int b = int.Parse(Console.ReadLine());
 
-            int sum = 0;
+            int number;
 
-            while (n > 0)
+            if (a > b)
             {
-                int digit = n % 10;
-
-                if (digit > k)
-                {
-                    sum += digit;
-                }
-
-                n = n / 10;
+                number = a;
+            }
+            else
+            {
+                number = b;
             }
 
-            Console.WriteLine("Сумма цифр = " + sum);
+            while (number % a != 0 || number % b != 0)
+            {
+                number++;
+            }
+
+            Console.WriteLine("НОК = " + number);
         }
-    } 
-
+    }
 }
-
