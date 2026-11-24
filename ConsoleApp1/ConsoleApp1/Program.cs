@@ -8,20 +8,19 @@ namespace ConsoleApp1
 {
     class Program
     {
-        static bool IsInside(double x, double y)
+    static void Main()
         {
-            return x >= 2 || (y >= 0.5 && y <= 1.5);
-        }
+            Console.Write("Введите a: ");
+            int a = int.Parse(Console.ReadLine());
 
-        static void Main()
-        {
-            Console.Write("Введите x: ");
-            double x = Convert.ToDouble(Console.ReadLine());
+            long sum = 0;
 
-            Console.Write("Введите y: ");
-            double y = Convert.ToDouble(Console.ReadLine());
+            for (int i = a; i <= 500; i++)
+            {
+                sum += (long)i * i * i;
+            }
 
-            Console.WriteLine(IsInside(x, y));
+            Console.WriteLine("Сумма кубов = " + sum);
         }
     }
 }
