@@ -10,20 +10,13 @@ namespace ConsoleApp1
     {
         static void Main()
         {
-            Console.Write("Введите количество чисел n: ");
+            Console.Write("Введите n: ");
             int n = int.Parse(Console.ReadLine());
 
-            double sum = 0;
-
-            for (int i = 1; i <= n; i++)
+            for (int i = 1; i * i <= n; i++)
             {
-                Console.Write("Введите число: ");
-                double a = double.Parse(Console.ReadLine());
-
-                sum += Math.Abs(a);
+                Console.WriteLine(i * i);
             }
-
-            Console.WriteLine("Сумма модулей = " + sum);
         }
     }
 }
