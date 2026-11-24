@@ -8,21 +8,25 @@ namespace ConsoleApp1
 {
     class Program
     {
-    static void Main()
+        static void Main()
         {
-            Console.Write("Введите a: ");
-            int a = int.Parse(Console.ReadLine());
+            Console.Write("Введите количество чисел n: ");
+            int n = int.Parse(Console.ReadLine());
 
-            long sum = 0;
+            double sum = 0;
 
-            for (int i = a; i <= 500; i++)
+            for (int i = 1; i <= n; i++)
             {
-                sum += (long)i * i * i;
+                Console.Write("Введите число: ");
+                double a = double.Parse(Console.ReadLine());
+
+                sum += Math.Abs(a);
             }
 
-            Console.WriteLine("Сумма кубов = " + sum);
+            Console.WriteLine("Сумма модулей = " + sum);
         }
     }
 }
-    
+
+
 
