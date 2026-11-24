@@ -13,13 +13,26 @@ namespace ConsoleApp1
             Console.Write("Введите n: ");
             int n = int.Parse(Console.ReadLine());
 
-            for (int i = 1; i * i <= n; i++)
+            Console.Write("Введите k: ");
+            int k = int.Parse(Console.ReadLine());
+
+            int sum = 0;
+
+            while (n > 0)
             {
-                Console.WriteLine(i * i);
+                int digit = n % 10;
+
+                if (digit > k)
+                {
+                    sum += digit;
+                }
+
+                n = n / 10;
             }
+
+            Console.WriteLine("Сумма цифр = " + sum);
         }
-    }
+    } 
+
 }
-
-
 
